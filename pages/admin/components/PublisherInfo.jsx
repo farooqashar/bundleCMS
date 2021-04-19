@@ -5,7 +5,7 @@ import React from "react";
 import BreadCrumbsPage from "..//components/Breadcrumbs.jsx";
 import CustomTextField from "..//components/textField.jsx";
 import Header from "..//components/header.jsx";
-import Footer from "..//components/Footer.jsx";
+import Footer from "..//components/footer.jsx";
 
 /* -----------------Nextjs--------------- */
 import Head from "next/head";
