@@ -6,7 +6,7 @@ import BreadCrumbsPage from "..//components/Breadcrumbs.jsx";
 import CustomAutocomplete from "..//components/CustomAutocomplete.jsx";
 import CustomTextField from "..//components/textField.jsx";
 import Header from "..//components/header.jsx";
-import Footer from "..//components/Footer.jsx";
+import Footer from "..//components/footer.jsx";
 
 /* -----------------Nextjs--------------- */
 import Link from "next/link";
