@@ -2,7 +2,7 @@
 import CustomAutocomplete from "..//components/CustomAutocomplete.jsx";
 import CustomTextField from "..//components/textField.jsx";
 import Header from "..//components/header.jsx";
-import Footer from "..//components/Footer.jsx";
+import Footer from "..//components/footer.jsx";
 
 /* -----------------Yup--------------- */
 import * as Yup from "yup";
