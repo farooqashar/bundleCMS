@@ -1,14 +1,27 @@
+// @flow
+
 /* -----------------Globals--------------- */
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 /* -----------------MaterialUI--------------- */
-import { Button, Box } from "@material-ui/core";
+import { Button, Box, CircularProgress } from '@material-ui/core';
 
 /* -----------------Child components--------------- */
-import BreadCrumbsPage from "..//components/Breadcrumbs.jsx";
+import Breadcrumbs from '../../common/Breadcrumbs';
+
+/* -----------------Nextjs--------------- */
+import Link from 'next/link';
+
+/* -----------------Types--------------- */
+type Props = {
+  variant: string,
+  link: string,
+  breadcrumbs: *,
+}
 
 /* -----------------Component--------------- */
-const Header = ({ variant, breadcrumbs }) => {
+const Header = (props: Props) => {
+  const { variant, breadcrumbs, link } = props;
   const [changeStatus, setChangeStatus] = useState(true);
 
   const saveData = () => {
@@ -21,12 +34,21 @@ const Header = ({ variant, breadcrumbs }) => {
       alignItems="center"
       justifyContent="space-between"
     >
-      <BreadCrumbsPage breadcrumbs={breadcrumbs}> </BreadCrumbsPage>
+      <Breadcrumbs breadcrumbValues={breadcrumbs} />
       {changeStatus ? (
-        <Button color="primary" variant="contained" onClick={saveData}>
-          {variant}
-        </Button>
-      ) : null}
+        <Link href={link}>
+          <Button color="primary" variant="contained" onClick={saveData}>
+            {variant}
+          </Button>
+        </Link>
+      )
+        : (
+          <CircularProgress
+            color="secondary"
+            size={35}
+          />
+        )
+        }
     </Box>
   );
 };
