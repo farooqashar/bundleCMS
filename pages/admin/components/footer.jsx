@@ -1,11 +1,32 @@
+// @flow
+
 /* -----------------Globals--------------- */
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 /* -----------------MaterialUI--------------- */
-import { Button, Box, DialogActions, Dialog, DialogTitle, DialogContent, Typography} from "@material-ui/core";
+import {
+  Button, Box, DialogActions, Dialog, DialogTitle,
+} from '@material-ui/core';
+
+/* -----------------Nextjs--------------- */
+import Link from 'next/link';
+
+/* -----------------Types--------------- */
+type Props = {
+  variant: string,
+  dialogTitle: string,
+  cancelTitle: string,
+  discardTitle: string,
+  discardLink: string,
+  cancelLink: string,
+}
 
 /* -----------------Component--------------- */
-const Footer = ({ variant, dialogTitle, cancelTitle, discardTitle}) => {
+const Footer = (props: Props) => {
+  const {
+    variant, dialogTitle, cancelTitle, discardTitle, discardLink, cancelLink,
+  } = props;
+
   const [deleteStatus, setDeleteStatus] = useState(true);
   const [open, setOpen] = React.useState(false);
 
@@ -16,9 +37,6 @@ const Footer = ({ variant, dialogTitle, cancelTitle, discardTitle}) => {
     setOpen(false);
   };
 
-  const deleteItem = () => {
-    setDeleteStatus(!deleteStatus);
-  };
   return (
     <Box
       py={3}
@@ -27,22 +45,27 @@ const Footer = ({ variant, dialogTitle, cancelTitle, discardTitle}) => {
       justifyContent="space-between"
     >
       {deleteStatus ? (
-        <Button color="secondary" onClick={handleClickOpen}>
+        <Button color="error" onClick={handleClickOpen}>
           {variant}
         </Button>
       ) : null}
 
-<Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
+      <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
           {dialogTitle}
         </DialogTitle>
         <DialogActions>
-        <Button autoFocus onClick={handleClose} color="primary">
-            {cancelTitle}
-          </Button>
-          <Button autoFocus onClick={handleClose} color="primary">
-            {discardTitle}
-          </Button>
+          <Link href={cancelLink}>
+            <Button autoFocus onClick={handleClose} color="primary">
+              {cancelTitle}
+            </Button>
+          </Link>
+
+          <Link href={discardLink}>
+            <Button autoFocus onClick={handleClose} color="primary">
+              {discardTitle}
+            </Button>
+          </Link>
         </DialogActions>
       </Dialog>
 
